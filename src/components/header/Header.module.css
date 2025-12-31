@@ -1,0 +1,218 @@
+.header {
+    height: 80px;
+    background: #eeeff1;
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.desktopNav {
+    display: flex;
+    gap: 30px;
+}
+
+.desktopNav button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    padding: 0;
+}
+
+.desktopNav button:hover {
+    color: #85AE72;
+}
+
+.desktopNav button.active {
+    color: #bcbd81ff;
+}
+
+/* Контакты */
+.contacts {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.phone {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.callBtn {
+    background: #6b8e63;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.burger span {
+    display: block;
+    height: 3px;
+    background: #000;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.burger span:nth-child(1) {
+    width: 100%;
+}
+
+.burger span:nth-child(2) {
+    width: 80%;
+}
+
+.burger span:nth-child(3) {
+    width: 60%;
+}
+
+.burger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 6px);
+    width: 100%;
+}
+
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    width: 100%;
+}
+
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #eeeff1;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1001;
+}
+
+.mobileMenu.show {
+    display: flex;
+}
+
+.mobileMenu button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    padding: 10px 0;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.mobileMenu button:last-child {
+    border-bottom: none;
+}
+
+.mobileMenu button:hover {
+    color: #85AE72;
+}
+
+.overlay {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktopNav {
+        display: none;
+    }
+    
+    .burger {
+        display: flex;
+    }
+    
+    .contacts {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    
+    .phone {
+        display: none;
+    }
+    
+    .callBtn {
+        min-width: 100px;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .header {
+        height: 70px;
+    }
+    
+    .mobileMenu {
+        top: 70px;
+    }
+    
+    .overlay {
+        top: 70px;
+    }
+}

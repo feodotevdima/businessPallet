@@ -1,0 +1,524 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: sans-serif;
+    color: #333;
+}
+
+.hero {
+    height: calc(100vh - 80px);
+    background: url('/public/assets/backgrounds/forestAutumn.svg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.heroOverlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    max-width: 443px;
+    align-items: stretch;
+}
+
+.heroCard {
+    background: rgba(255, 255, 255, 0.65);
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.heroCard h1 {
+    margin-bottom: 16px;
+    font-weight: 700;
+    margin-right: 40px;
+    margin-left: 160px;
+}
+
+.line {
+    width: 100%;
+    background-color: #A19E9E;
+    margin-bottom: 48px;
+    height: 2px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    font-size: 26px;
+    margin-right: 40px;
+    margin-left: 160px;
+}
+
+ul li+li {
+    margin-top: 15px;
+}
+
+li {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+li:hover {
+    color: #FFAD5B;
+}
+
+.activeMenuItem {
+    color: #FFAD5B;
+}
+
+/* Карусель */
+.carouselContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    margin-left: 100px;
+    width: 800px;
+}
+
+.carouselTitle {
+    font-size: 42px;
+    margin-bottom: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* Стрелка для мобильных */
+.arrowIcon {
+    display: none;
+    transition: transform 0.3s ease;
+}
+
+.arrowIcon.open {
+    transform: rotate(180deg);
+}
+
+/* Dropdown меню для мобильных */
+.dropdownMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.dropdownMenu.open {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdownMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dropdownMenu li {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.dropdownMenu li:hover {
+    background: rgba(255, 173, 91, 0.1);
+    color: #FFAD5B;
+}
+
+.dropdownMenu .activeMenuItem {
+    background: rgba(255, 173, 91, 0.2);
+    color: #FFAD5B;
+    font-weight: bold;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 35px;
+}
+
+.carouselButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carouselButton:active {
+    transform: scale(0.95);
+}
+
+.carouselButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.prevButton {
+    order: 1;
+}
+
+.nextButton {
+    order: 3;
+}
+
+/* Контейнер для слайда */
+.carouselSlideContainer {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    min-height: 620px;
+    order: 2;
+    overflow: hidden;
+}
+
+.carouselSlide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.carouselContent {
+    background-color: #FCFCFC;
+    border-radius: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Контейнер для изображения */
+.imageWrapper {
+    padding-top: 50px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    border-radius: 40px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.carouselImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Контейнер для текста и кнопки */
+.textContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 24px;
+    gap: 40px;
+}
+
+.carouselText {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    color: #333;
+    font-weight: 400;
+}
+
+.mainBtn {
+    background: #FFAD5B;
+    color: #000;
+    border: none;
+    padding: 15px 60px;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 250px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mainBtn:hover {
+    background: #ff9a3b;
+    transform: translateY(-2px);
+}
+
+.mainBtn:active {
+    transform: translateY(0);
+}
+
+/* Индикаторы */
+.carouselIndicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.activeIndicator {
+    background: #333;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: #666;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .carouselContainer {
+        margin-left: -30px;
+        width: 700px;
+    }
+
+    .carouselText {
+        font-size: 20px;
+    }
+
+    .mainBtn {
+        padding: 10px 15px;
+        font-size: 24px;
+        min-width: 0;
+    }
+
+    .carousel {
+        gap: 15px;
+    }
+
+    .heroCard h1 {
+        margin-left: 100px;
+    }
+
+    ul {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .heroOverlay {
+        display: none !important;
+    }
+
+    .carouselContainer {
+        margin-left: 0;
+        width: 90%;
+        margin-top: -30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .carouselTitle {
+        position: relative;
+        margin-bottom: 0px;
+    }
+
+    /* Показываем стрелку на мобильных */
+    .arrowIcon {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Скрываем боковое меню на мобильных */
+    .heroOverlay {
+        display: none;
+    }
+
+    .heroOverlay.show {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainBtn {
+        font-size: 24px;
+        padding: 12px 30px;
+    }
+
+    .carouselTitle {
+        font-size: 28px;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .carouselText {
+        font-size: 16px;
+    }
+
+    .mainBtn {
+        font-size: 20px;
+        padding: 10px 25px;
+    }
+
+    .carouselButton {
+        display: none;
+    }
+
+    .imageWrapper {
+        padding-top: 30px;
+        margin-bottom: 10px;
+        height: 200px;
+    }
+
+    .carouselSlideContainer {
+        min-height: 400px;
+    }
+
+    .dropdownMenu {
+        min-width: 200px;
+        padding: 15px;
+    }
+
+    .dropdownMenu li {
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-height: 850px) {
+    .carouselSlideContainer {
+        min-height: 450px;
+    }
+
+    .imageWrapper {
+        height: 250px;
+    }
+
+    .carouselText {
+        font-size: 20px;
+    }
+
+    .mainBtn {
+        font-size: 22px;
+        padding: 12px 40px;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.slideOutLeft {
+    animation: slideOutLeft 0.3s ease forwards;
+}
+
+.slideOutRight {
+    animation: slideOutRight 0.3s ease forwards;
+}
+
+.slideIn {
+    animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
