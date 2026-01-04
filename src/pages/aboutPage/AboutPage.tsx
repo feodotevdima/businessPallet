@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from "./AboutPage.module.css";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AboutPage: React.FC = () => {
   const navigate = useNavigate();
